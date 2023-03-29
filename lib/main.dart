@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final videoPostRepository = VideoPostRepositoryImpl(
-      videosDataSource: LocalVideoDataSource(),
+      videosDataSource: LocalVideoDataSourceImpl(),
     );
 
     return MultiProvider(

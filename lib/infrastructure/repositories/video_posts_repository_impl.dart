@@ -10,7 +10,7 @@ class VideoPostRepositoryImpl implements VideoPostsRepository {
   });
 
   @override
-  Future<List<VideoPost>> getFavoriteVideosByUser(int page) {
+  Future<List<VideoPost>> getFavoriteVideosByUser(String userID) {
     throw UnimplementedError();
   }
 
