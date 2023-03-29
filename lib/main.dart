@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => DiscoverProvider(),
+          // propiedad en false si quiero que se cree la instancia inmediatamente
+          lazy: false,
+          create: (_) => DiscoverProvider()..loadNextPage(),
         )
       ],
       child: MaterialApp(
