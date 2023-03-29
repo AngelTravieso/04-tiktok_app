@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_app/config/helpers/human_formats.dart';
 import 'package:tiktok_app/domain/entities/video_post.dart';
@@ -19,9 +20,23 @@ class VideoButtons extends StatelessWidget {
           iconColor: Colors.red,
           iconData: Icons.favorite,
         ),
+        const SizedBox(
+          height: 20,
+        ),
         _CustomIconButton(
           value: video.likes,
           iconData: Icons.remove_red_eye_outlined,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        SpinPerfect(
+          infinite: true,
+          duration: const Duration(seconds: 5),
+          child: const _CustomIconButton(
+            value: 0,
+            iconData: Icons.play_circle_outline,
+          ),
         ),
       ],
     );
@@ -49,7 +64,7 @@ class _CustomIconButton extends StatelessWidget {
           ),
           color: color,
         ),
-        Text(HumanFormats.humanReadbleNumber(value.toDouble())),
+        if (value > 0) Text(HumanFormats.humanReadbleNumber(value.toDouble())),
       ],
     );
   }
