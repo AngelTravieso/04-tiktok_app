@@ -46,24 +46,34 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
           );
         }
 
-        return AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
-          child: Stack(
-            children: [
-              VideoPlayer(controller),
+        return GestureDetector(
+          child: AspectRatio(
+            aspectRatio: controller.value.aspectRatio,
+            child: Stack(
+              children: [
+                VideoPlayer(controller),
 
-              // Gradiente
+                // Gradiente
 
-              // texto
-              Positioned(
-                bottom: 50,
-                left: 20,
-                child: _VideoCaption(
-                  caption: widget.caption,
+                // texto
+                Positioned(
+                  bottom: 50,
+                  left: 20,
+                  child: _VideoCaption(
+                    caption: widget.caption,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+          onTap: () {
+            if (controller.value.isPlaying) {
+              controller.pause();
+              return;
+            }
+
+            controller.play();
+          },
         );
       },
     );
@@ -73,7 +83,6 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
 class _VideoCaption extends StatelessWidget {
   final String caption;
   const _VideoCaption({
-    super.key,
     required this.caption,
   });
 
